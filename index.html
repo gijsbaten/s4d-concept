@@ -1,0 +1,74 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="MysteryGame">
+  <meta name="author" content="Gijs Baten">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> <!--320-->
+  <title>Concept: MysteryGame</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+  <style>
+  html { font-family: 'ubuntu'; }
+  body { background: #EEE; width: calc(100vw - 10px); height: calc(100vh - 10px); margin: 0; border: 5px solid #DDD;}
+  #content { text-align: center; }
+  .knop { background: #333; width: 250px; height: 250px; margin-top: calc(50vh - 125px); /*margin-left: calc(50vw - 150px);*/ border-radius: 50%; border: none; border-bottom: 5px solid #000; color: #FFF; font-size: 4em; outline: none; }
+  .knop:hover { background: #222; border-bottom: 0; border: 5px solid #333; transition: border-bottom .2s; }
+  #aantalTiks { background: darkgreen; width: 70px; height: 70px; position: absolute; top: 0; margin-top: calc(50vh - 120px); margin-left: calc(50vw - -30px); border-radius: 50%; text-align: center; color: #FFF; font-size: 2em;
+    line-height: 2.15em; box-shadow: 0px 0px 5px 0px rgba(51, 51, 51, 0.3); border: 3px solid #EEE; }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+      <button class="knop" id="knopTik">Tik!</button>
+      <div id="aantalTiks"></div>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBaVSWcPMaDguHu1u1pCeOt8bWHcPDTsmM",
+    authDomain: "conceptapp-f341f.firebaseapp.com",
+    databaseURL: "https://conceptapp-f341f.firebaseio.com",
+    projectId: "conceptapp-f341f",
+    storageBucket: "conceptapp-f341f.appspot.com",
+    messagingSenderId: "698171156789"
+  };
+  firebase.initializeApp(config);
+    // Get a reference to the database service
+    var database = firebase.database();
+  </script>
+<script>
+
+var getal = 0
+var getalNieuw = getal
+var tellerReference = database.ref("tikPagina/teller")
+var tellerNieuwReference = database.ref("tikPagina/tellerNieuw")
+
+document.getElementById("knopTik").onclick = tikker
+
+function tikker() {
+  tellerReference.set(optellen())
+  tellerNieuwReference.set(getal)
+}
+
+function optellen(){
+  return getal += 1
+}
+
+tellerReference.on('value', function(data){
+  document.getElementById("aantalTiks").innerHTML = data.val()
+})
+
+function tellerNieuw(){
+  return getalNieuw += 1
+}
+
+</script>
+
+</body>
+</html>
