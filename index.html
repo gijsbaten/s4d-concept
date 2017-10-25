@@ -41,8 +41,8 @@
 
 <body>
   <div id="content" class="noselect">
-      <button class="knop" id="knopTik">Tik!</button>
-      <div id="aantalTiks "></div>
+      <button class="knop noselect" id="knopTik">Tik!</button>
+      <div id="aantalTiks" class="noselect"></div>
   </div>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
@@ -57,9 +57,9 @@
     messagingSenderId: "698171156789"
   };
   firebase.initializeApp(config);
-    // Get a reference to the database service
-    var database = firebase.database();
-  </script>
+  // Get a reference to the database service
+  var database = firebase.database();
+</script>
 <script>
 
 var getal = 0
@@ -102,8 +102,6 @@ function tellerNieuw(){
       });
   };
 });
-
-$("body").nodoubletapzoom();
 
 </script>
 
