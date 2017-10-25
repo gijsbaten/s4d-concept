@@ -20,7 +20,7 @@
   .knop:hover,
   .knop:active,
   .knop:focus,
-  .knop:visited { z-index: 0; }
+  .knop:visited { z-index: 0; outline: 0; }
   #aantalTiks { background: darkgreen; width: 70px; height: 70px; position: absolute; top: 0; margin-top: calc(50vh - 120px); margin-left: calc(50vw - -30px); border-radius: 50%; text-align: center; color: #FFF; font-size: 2em;
     line-height: 2.15em; box-shadow: 0px 0px 5px 0px rgba(51, 51, 51, 0.3); border: 3px solid #EEE; z-index: 1; }
   
@@ -41,7 +41,7 @@
 
 <body>
   <div id="content" class="noselect">
-      <button class="knop noselect" id="knopTik">Tik!</button>
+      <button class="knop noselect" id="knopTik" tabindex="-1">Tik!</button>
       <div id="aantalTiks" class="noselect"></div>
   </div>
 
